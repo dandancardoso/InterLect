@@ -58,7 +58,7 @@ class WatchViewCtrl:UIViewController {
             else if(!self.isAuthentic) {
                 
                 let alert = UIAlertView()
-                alert.title = "No Text"
+                alert.title = "Authentication Error"
                 alert.message = "Name or password incorrect"
                 alert.addButtonWithTitle("Ok")
                 alert.show()

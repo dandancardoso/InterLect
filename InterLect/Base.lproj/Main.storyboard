@@ -695,7 +695,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="createLecture:" destination="NIu-bl-U8e" eventType="touchUpInside" id="Fwx-HF-bFW"/>
-                                    <segue destination="UXP-r5-OlZ" kind="show" id="jr7-xF-v7H"/>
+                                    <segue destination="UXP-r5-OlZ" kind="show" identifier="segueFromCreate" id="jr7-xF-v7H"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Audience's Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljP-EJ-bpF">

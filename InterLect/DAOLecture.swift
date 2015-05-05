@@ -26,14 +26,14 @@ class DAOLecture {
     }
     
     func nameAvailable(name:String)->Bool {
-        var result = false
+        var result = true
         if (dataBase != nil) {
             for rest in dataBase!.children.allObjects as! [FDataSnapshot] {
                 var dict : NSDictionary = rest.value as! NSDictionary
                 var count = 0
                 if (name == rest.key)
                 {
-                    result = true
+                    result = false
                 }
                 
             }
