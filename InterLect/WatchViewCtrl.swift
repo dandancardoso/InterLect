@@ -33,6 +33,7 @@ class WatchViewCtrl:UIViewController {
         if (daoLecture.authenticate(self.name.text,password: self.password.text)) {
             lecture = daoLecture.getLecture(self.name.text)!
             self.isPanelist = daoLecture.isPanelist(self.name.text,password: self.password.text)
+            println(lecture.audiencePassword)
         } else {
             //todo: alert em vez de println
             println("Wrong name or password")

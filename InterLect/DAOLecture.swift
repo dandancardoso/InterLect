@@ -29,14 +29,13 @@ class DAOLecture {
     }
     
     func getLecture(name:String)->Lecture? {
-//        var path = "https://scorching-torch-3197.firebaseio.com/InterLect/Lectures/\(name)"
-//        var ref = Firebase(url:path)
-//        ref.observeEventType(.ChildAdded, withBlock: { snapshot in
-//            let panelistPassword = snapshot.value.objectForKey("panelist") as? String
-//            let audiencePassword = snapshot.value.objectForKey("audience") as? String
-//            println("panelist:\(panelistPassword) audience:\(audiencePassword)")
+        //var path = "https://scorching-torch-3197.firebaseio.com/InterLect/Lectures/\(name)/panelist"
+//        let ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Lectures/\(name)")
+//        ref.queryOrderedByChild("panelist").observeEventType(.ChildAdded, withBlock: { snapshot in
+//            if let panelist = snapshot.value["panelist"] as? String {
+//                println("\(snapshot.key) is \(panelist)")
+//            }
 //        })
-        //
         return Lecture(name: "teste", panelistPassword: "teste", audiencePassword: "teste")
     }
     
