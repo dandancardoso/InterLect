@@ -127,6 +127,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="watchLecture:" destination="UXP-r5-OlZ" eventType="touchUpInside" id="3YQ-nU-I28"/>
                                     <segue destination="KeW-jC-QnA" kind="show" id="G2t-0R-8Dv"/>
                                 </connections>
                             </button>
@@ -653,6 +654,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="createLecture:" destination="NIu-bl-U8e" eventType="touchUpInside" id="Fwx-HF-bFW"/>
                                     <segue destination="KeW-jC-QnA" kind="show" id="MLU-xV-gHb"/>
                                 </connections>
                             </button>

@@ -9,12 +9,12 @@
 import Foundation
 
 class Lecture {
-    var name:String!
-    var panelistPassword:String!
-    var audiencePassword:String!
+    var name:String?
+    var panelistPassword:String?
+    var audiencePassword:String?
     var questions:[String]!
     
-    init (name:String,panelistPassword:String,audiencePassword:String) {
+    init (name:String?,panelistPassword:String?,audiencePassword:String?) {
         self.name = name
         self.panelistPassword = panelistPassword
         self.audiencePassword = audiencePassword
