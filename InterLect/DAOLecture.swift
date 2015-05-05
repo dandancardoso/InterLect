@@ -36,6 +36,7 @@ class DAOLecture {
 //            let audiencePassword = snapshot.value.objectForKey("audience") as? String
 //            println("panelist:\(panelistPassword) audience:\(audiencePassword)")
 //        })
+        //
         return Lecture(name: "teste", panelistPassword: "teste", audiencePassword: "teste")
     }
     
