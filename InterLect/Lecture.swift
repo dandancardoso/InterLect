@@ -20,4 +20,5 @@ class Lecture {
         self.audiencePassword = audiencePassword
         self.questions = []
     }
+
 }

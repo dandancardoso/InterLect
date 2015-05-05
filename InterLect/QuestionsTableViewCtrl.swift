@@ -12,6 +12,8 @@ import UIKit
 class QuestionsTableViewCtrl:UITableViewController {
     
     var question = [String]()
+    var isPanelist:Bool?
+    var nameLecture:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
