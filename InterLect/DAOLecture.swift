@@ -9,6 +9,7 @@
 import Foundation
 
 var dataBase:FDataSnapshot?
+var questions = [String]()
 
 class DAOLecture {
     
@@ -18,7 +19,7 @@ class DAOLecture {
     func saveLecture(lecture:Lecture)->Bool {
         //verificar se pode criar!
         var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Lectures")
-        var passwords = ["panelist": lecture.panelistPassword!, "audience": lecture.audiencePassword!]
+        var passwords = ["panelist": lecture.panelistPassword!, "audience": lecture.audiencePassword!,"questions":["1":""]]
         var usersRef = ref.childByAppendingPath(lecture.name)
         usersRef.setValue(passwords)
         
@@ -62,7 +63,7 @@ class DAOLecture {
         return result
     }
     
-    func getDataBase() {
+    func updateDataBase() {
         var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Lectures")
         var keys = [AnyObject]()
         ref.observeEventType(.Value, withBlock: { snapshot in
@@ -82,17 +83,20 @@ class DAOLecture {
                     var audience = dict["audience"] as! String
                     lecture = Lecture(name: name, panelistPassword: panelist, audiencePassword: audience)
                 }
-                
             }
         }
         return lecture
     }
     
-    func isPanelist(name:String,password:String)->Bool {
-        return true
-    }
-    
-    func getQuestions(name:String)->[String] {
-        return ["a","b","c","d","e"]
+    func updateQuestions(name:String) {
+        var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Lectures/\(name)/questions")
+        if (ref != nil) {
+            ref.observeEventType(.Value, withBlock: { snapshot in
+                for rest in snapshot.children.allObjects as! [FDataSnapshot] {
+                    var question : NSString = rest.value as! NSString
+                    questions.append(question as String)
+                }
+            })
+        }
     }
 }

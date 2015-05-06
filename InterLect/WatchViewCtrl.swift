@@ -17,6 +17,13 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     var isPanelist:Bool?
     var isAuthentic = false
     
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        var daoLecture = DAOLecture()
+        daoLecture.updateDataBase()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.password.resignFirstResponder()
@@ -38,7 +45,7 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
             return
         } else {
             var lecture = daoLecture.getLecture(self.name.text)
-            self.isPanelist = daoLecture.isPanelist(self.name.text,password: self.password.text)
+            daoLecture.updateQuestions(self.name.text)
             return
         }
     }
@@ -83,7 +90,11 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
         if segue.identifier == "segueFromWatch"
         {
             if let destinationVC = segue.destinationViewController as? QuestionsTableViewCtrl{
-                destinationVC.isPanelist = self.isPanelist
+                if (self.role.selectedSegmentIndex == 0) {
+                    destinationVC.isPanelist = true
+                } else {
+                    destinationVC.isPanelist = false
+                }
                 destinationVC.nameLecture = self.name.text
             }
         }
