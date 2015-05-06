@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CreateViewCtrl:UIViewController {
+class CreateViewCtrl:UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var panelistPassword: UITextField!
@@ -39,6 +39,11 @@ class CreateViewCtrl:UIViewController {
                 println("Error!")
             }
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {

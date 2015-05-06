@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class WatchViewCtrl:UIViewController {
+class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var name: UITextField!
@@ -41,6 +41,11 @@ class WatchViewCtrl:UIViewController {
             self.isPanelist = daoLecture.isPanelist(self.name.text,password: self.password.text)
             return
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
     override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
