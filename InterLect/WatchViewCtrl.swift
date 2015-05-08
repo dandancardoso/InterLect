@@ -14,6 +14,8 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var role: UISegmentedControl!
+    var refreshControl: UIRefreshControl!
+    var refreshLoadingView: UIView!
     var isPanelist:Bool?
     var isAuthentic = false
     
@@ -35,6 +37,7 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     @IBAction func watchLecture(sender: AnyObject) {
         var daoLecture = DAOLecture()
         var lecture:Lecture
+    
         
         if (self.password == nil || self.password.text == "" || self.name == nil || self.name.text == "") {
             return
@@ -100,4 +103,40 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
         }
     }
 
+    func setupRefreshControl() {
+        
+        // Programmatically inserting a UIRefreshControl
+        self.refreshControl = UIRefreshControl()
+        
+        // Setup the loading view, which will hold the moving graphics
+        self.refreshLoadingView = UIView(frame: self.refreshControl!.bounds)
+        self.refreshLoadingView.backgroundColor = UIColor.clearColor()
+        
+        // Setup the color view, which will display the rainbowed background
+//        self.refreshColorView = UIView(frame: self.refreshControl!.bounds)
+//        self.refreshColorView.backgroundColor = UIColor.clearColor()
+//        self.refreshColorView.alpha = 0.30
+        
+        // Clip so the graphics don't stick out
+        self.refreshLoadingView.clipsToBounds = true;
+        
+        // Add the loading and colors views to our refresh control
+        self.refreshControl!.addSubview(self.refreshLoadingView)
+        
+        // When activated, invoke our refresh function
+        self.refreshControl?.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func refresh(){
+        
+        // -- DO SOMETHING AWESOME (... or just wait 3 seconds) --
+        // This is where you'll make requests to an API, reload data, or process information
+        var delayInSeconds = 3.0;
+        var popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC)));
+        dispatch_after(popTime, dispatch_get_main_queue()) { () -> Void in
+            // When done requesting/reloading/processing invoke endRefreshing, to close the control
+            self.refreshControl!.endRefreshing()
+        }
+        // -- FINISHED SOMETHING AWESOME, WOO! --
+    }
 }
