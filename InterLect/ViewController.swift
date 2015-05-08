@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         let dao = DAOLecture()
         dao.updateDataBase()
+        //dao.addQuestion("s", questionText: "nova pergunta2")
     }
 
     override func didReceiveMemoryWarning() {

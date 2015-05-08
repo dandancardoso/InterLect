@@ -15,6 +15,14 @@ class QuestionsTableViewCtrl:UITableViewController {
     var isPanelist:Bool?
     var nameLecture:String?
     var refreshCtrl:UIRefreshControl!
+    let dao = DAOLecture()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if (self.nameLecture != nil) {
+            dao.updateQuestions(self.nameLecture!)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +33,7 @@ class QuestionsTableViewCtrl:UITableViewController {
         self.refreshCtrl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshCtrl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshCtrl)
-        
-        self.question = ["- What kind of sickness have you lied about so you wouldn't go to work?", "- Do you trust anyone with your life?", "- What is your greatest strength or weakness?"]
+        self.question = questions
         
     }
     
@@ -46,7 +53,7 @@ class QuestionsTableViewCtrl:UITableViewController {
         cell.textLabel?.numberOfLines = 0
         tableView.rowHeight = 70
         
-        cell.textLabel?.text = question[indexPath.row]
+        cell.textLabel?.text = self.question[indexPath.row]
         cell.textLabel?.textColor = UIColor.whiteColor()
         
         return cell
@@ -55,7 +62,9 @@ class QuestionsTableViewCtrl:UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            question.removeAtIndex(indexPath.row)
+            self.question.removeAtIndex(indexPath.row)
+            let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell?;
+            dao.deleteQuestion(self.nameLecture!, questionText:currentCell!.textLabel!.text!)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             println(indexPath)
         }
@@ -70,6 +79,5 @@ class QuestionsTableViewCtrl:UITableViewController {
         
         self.refreshCtrl.endRefreshing()
     }
-
 
 }

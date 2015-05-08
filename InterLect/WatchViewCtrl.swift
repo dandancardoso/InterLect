@@ -63,7 +63,6 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
             return
         }
         self.isAuthentic = daoLecture.authenticate(self.name.text,password: self.password.text,role:self.role.selectedSegmentIndex)
-        println(self.isAuthentic)
         if (!self.isAuthentic) {
             return
         } else {
@@ -92,6 +91,8 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     }
 
     override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
+        var daoLecture = DAOLecture()
+        self.isAuthentic = daoLecture.authenticate(self.name.text,password: self.password.text,role:self.role.selectedSegmentIndex)
         if identifier == "segueFromWatch" {
             if (self.password.text.isEmpty || self.name.text.isEmpty) {
                 
