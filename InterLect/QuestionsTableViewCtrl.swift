@@ -14,11 +14,17 @@ class QuestionsTableViewCtrl:UITableViewController {
     var question = [String]()
     var isPanelist:Bool?
     var nameLecture:String?
+    var refreshCtrl:UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
 //        self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        self.refreshCtrl = UIRefreshControl()
+        self.refreshCtrl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshCtrl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshCtrl)
         
         self.question = ["- What kind of sickness have you lied about so you wouldn't go to work?", "- Do you trust anyone with your life?", "- What is your greatest strength or weakness?"]
         
@@ -53,6 +59,16 @@ class QuestionsTableViewCtrl:UITableViewController {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             println(indexPath)
         }
+    }
+
+    func refresh(sender:AnyObject){
+        
+        //code to refresh table
+        
+        
+        self.tableView.reloadData()
+        
+        self.refreshCtrl.endRefreshing()
     }
 
 
