@@ -12,4 +12,13 @@ import UIKit
 class AddQuestionViewCtrl:UIViewController {
     
     @IBOutlet weak var question: UITextField!
+    var lectureName:String?
+    
+    @IBAction func addQuestion(sender: AnyObject) {
+        if (self.question != nil && self.question.text != "" && self.lectureName != nil) {
+            var dao = DAOLecture()
+            dao.addQuestion(self.lectureName!, questionText: self.question.text)
+            dao.updateQuestions(self.lectureName!)
+        }
+    }
 }

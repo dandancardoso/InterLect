@@ -81,6 +81,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="editingDidEnd:" destination="UXP-r5-OlZ" eventType="editingDidEnd" id="Qkf-JR-XIN"/>
                                     <outlet property="delegate" destination="UXP-r5-OlZ" id="iil-SN-C2n"/>
                                 </connections>
                             </textField>
@@ -301,12 +302,15 @@
                     <navigationItem key="navigationItem" title="Questions" id="Thb-7I-fba">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OGl-wa-Pox">
                             <connections>
-                                <segue destination="THA-3b-NIW" kind="show" id="OLK-uh-zrY"/>
+                                <segue destination="THA-3b-NIW" kind="show" identifier="segueFromQuestionsTableView" id="OLK-uh-zrY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="addQuestion" destination="OGl-wa-Pox" id="URa-tA-zCb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjo-Ch-BL9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -456,7 +460,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Add Question" id="3g2-EH-cQq">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="XC0-L9-0dR"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="XC0-L9-0dR">
+                            <connections>
+                                <action selector="addQuestion:" destination="THA-3b-NIW" id="yck-vA-wdA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>

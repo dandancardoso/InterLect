@@ -90,6 +90,13 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
         return true
     }
 
+    @IBAction func editingDidEnd(sender: AnyObject) {
+        var daoLecture = DAOLecture()
+        if (self.name != nil && self.name.text != "") {
+            daoLecture.updateQuestions(self.name.text)
+        }
+    }
+    
     override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
         var daoLecture = DAOLecture()
         self.isAuthentic = daoLecture.authenticate(self.name.text,password: self.password.text,role:self.role.selectedSegmentIndex)

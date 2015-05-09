@@ -17,6 +17,12 @@ class CreateViewCtrl:UIViewController, UITextFieldDelegate {
     let isPanelist = true
     var nameAvailable = false
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        var daoLecture = DAOLecture()
+        daoLecture.updateDataBase()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.name.resignFirstResponder()

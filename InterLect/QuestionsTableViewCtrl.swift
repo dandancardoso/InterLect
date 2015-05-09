@@ -16,11 +16,18 @@ class QuestionsTableViewCtrl:UITableViewController {
     var nameLecture:String?
     var refreshCtrl:UIRefreshControl!
     let dao = DAOLecture()
+    @IBOutlet weak var addQuestion: UIBarButtonItem!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if (self.nameLecture != nil) {
             dao.updateQuestions(self.nameLecture!)
+        }
+        if (self.isPanelist != nil && self.isPanelist == true) {
+            self.question = questions
+        }
+        else if (self.isPanelist != nil && self.isPanelist == false) {
+            
         }
     }
     
@@ -33,7 +40,6 @@ class QuestionsTableViewCtrl:UITableViewController {
         self.refreshCtrl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshCtrl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshCtrl)
-        self.question = questions
         
     }
     
@@ -66,18 +72,31 @@ class QuestionsTableViewCtrl:UITableViewController {
             let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell?;
             dao.deleteQuestion(self.nameLecture!, questionText:currentCell!.textLabel!.text!)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            println(indexPath)
+            //println(indexPath)
         }
     }
 
     func refresh(sender:AnyObject){
         
         //code to refresh table
-        
+        if (self.nameLecture != nil) {
+            dao.updateQuestions(self.nameLecture!)
+        }
+        self.question = questions
         
         self.tableView.reloadData()
         
         self.refreshCtrl.endRefreshing()
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "segueFromQuestionsTableView"
+        {
+            if let destinationVC = segue.destinationViewController as? AddQuestionViewCtrl{
+                destinationVC.lectureName = self.nameLecture
+            }
+        }
+    }
+
 
 }

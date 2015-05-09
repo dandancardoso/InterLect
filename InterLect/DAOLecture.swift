@@ -18,10 +18,15 @@ class DAOLecture {
     
     func saveLecture(lecture:Lecture)->Bool {
         //verificar se pode criar!
-        var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Lectures")
+        var refLectures = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Lectures")
         var passwords = ["panelist": lecture.panelistPassword!, "audience": lecture.audiencePassword!]
-        var usersRef = ref.childByAppendingPath(lecture.name)
-        usersRef.setValue(passwords)
+        var lec = refLectures.childByAppendingPath(lecture.name)
+        lec.setValue(passwords)
+        
+        var refQuestions = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions")
+        var questionText = ["ignore":""]
+        var question = refQuestions.childByAppendingPath(lecture.name)
+        question.setValue(questionText)
         
         return true
     }
@@ -89,52 +94,47 @@ class DAOLecture {
     }
     
     func updateQuestions(name:String) {
-        var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Lectures/\(name)/questions")
+        var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(name)")
         if (ref != nil) {
             ref.observeEventType(.Value, withBlock: { snapshot in
                 questions = [String]()
-                for rest in snapshot.children.allObjects as! [FDataSnapshot] {
-                    var question : NSString = rest.value as! NSString
-                    questions.append(question as String)
-                }
-            })
-        }
-    }
-    
-    func deleteQuestion(lectureName:String,questionText:String) {
-        var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Lectures/\(lectureName)/questions")
-        if (ref != nil) {
-            ref.observeEventType(.Value, withBlock: { snapshot in
-                questions = [String]()
-                for rest in snapshot.children.allObjects as! [FDataSnapshot] {
-                    var question : NSString = rest.value as! NSString
-                    if (questionText == question) {
-                        var r = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Lectures/\(lectureName)/questions/\(rest.key)")
-                        r.removeValue();
+                var dict = snapshot.value as! NSDictionary
+                for question in dict {
+                    if (question.value as! String != "" || question.key as! String != "ignore") {
+                        questions.append(question.value as! String)
                     }
                 }
             })
         }
     }
     
-    private func hasQuestionsChild()->Bool {
-        return true
+    func deleteQuestion(lectureName:String,questionText:String) {
+        var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(lectureName)")
+        if (ref != nil) {
+            ref.observeEventType(.Value, withBlock: { snapshot in
+                var dic : NSDictionary = snapshot.value as! NSDictionary
+                for q in dic {
+                    if (questionText == q.value as! String) {
+                        var r = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(lectureName)/\(q.key)")
+                        r.removeValue();
+                        //why this break doesn't work? it still removes two questions when they are equal.
+                        break
+                    }
+                }
+            })
+        }
     }
     
-    private func createFirstQuestion() {
-        
-    }
     
-//    func addQuestion(lectureName:String,questionText:String) {
-//        var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Lectures/\(lectureName)")
-//        if (ref != nil) {
-//            println("entrou")
-//            var questionCreation = [ "\(questions.count)" : questionText ]
-//            var usersRef = ref.childByAppendingPath("questions")
-//            
-//            array.append(questionCreation)
-//            usersRef.setValue(array)
-//        }
-//    }
+    func addQuestion(lectureName:String,questionText:String) {
+        if (questionText != "") {
+            var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(lectureName)")
+            if (ref != nil) {
+                //save in firebase
+                var post1Ref = ref.childByAutoId()
+                post1Ref.setValue(questionText)
+            }
+        }
+    }
 
 }
