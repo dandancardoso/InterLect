@@ -159,7 +159,6 @@
                                 </variation>
                                 <connections>
                                     <action selector="watchLecture:" destination="UXP-r5-OlZ" eventType="touchUpInside" id="3YQ-nU-I28"/>
-                                    <segue destination="KeW-jC-QnA" kind="show" identifier="segueFromWatch" id="G2t-0R-8Dv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -256,11 +255,46 @@
                         <outlet property="name" destination="tJW-Ac-kH0" id="Ish-cR-wN7"/>
                         <outlet property="password" destination="zci-3m-uzx" id="wTV-kd-kUb"/>
                         <outlet property="role" destination="0Mw-mC-ZqG" id="2OB-77-Y2q"/>
+                        <segue destination="KeW-jC-QnA" kind="show" identifier="panelist" id="uZE-kP-0Ol"/>
+                        <segue destination="J8N-k4-r5O" kind="show" identifier="audience" id="kFe-MF-meb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QET-ts-bBW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="991.5" y="-153"/>
+        </scene>
+        <!--Questions-->
+        <scene sceneID="MG3-k4-2DU">
+            <objects>
+                <tableViewController id="J8N-k4-r5O" customClass="AudienceQuestionsTableViewController" customModule="InterLect" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="he5-Ja-wc3">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="pXs-Mh-GNp">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pXs-Mh-GNp" id="Fsw-cY-5Zm">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="J8N-k4-r5O" id="csL-cA-pQ1"/>
+                            <outlet property="delegate" destination="J8N-k4-r5O" id="EqF-FF-VyU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Questions" id="uSF-Wd-HUd">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0ih-XG-xHI">
+                            <connections>
+                                <segue destination="THA-3b-NIW" kind="show" identifier="segueFromAudienceQuestionsTableView" id="3Xi-J0-tH6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NhX-vK-fdN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1693.5" y="-346"/>
         </scene>
         <!--Questions-->
         <scene sceneID="QII-jJ-THC">
@@ -299,18 +333,9 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Questions" id="Thb-7I-fba">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OGl-wa-Pox">
-                            <connections>
-                                <segue destination="THA-3b-NIW" kind="show" identifier="segueFromQuestionsTableView" id="OLK-uh-zrY"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Questions" id="Thb-7I-fba"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <outlet property="addQuestion" destination="OGl-wa-Pox" id="URa-tA-zCb"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjo-Ch-BL9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -16,6 +16,7 @@
 		A07EA76A1AF7FB0100DF32B3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07EA7691AF7FB0100DF32B3 /* Security.framework */; };
 		A07EA76C1AF7FB1000DF32B3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07EA76B1AF7FB1000DF32B3 /* SystemConfiguration.framework */; };
 		A07EA7721AF7FE9500DF32B3 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07EA7711AF7FE9500DF32B3 /* Firebase.framework */; };
+		A0DDD79C1AFEBD0D0069C8F2 /* AudienceQuestionsTableViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDD79B1AFEBD0D0069C8F2 /* AudienceQuestionsTableViewCtrl.swift */; };
 		A0F964B01AF6A52300FCA5BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F964AF1AF6A52300FCA5BB /* AppDelegate.swift */; };
 		A0F964B21AF6A52300FCA5BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F964B11AF6A52300FCA5BB /* ViewController.swift */; };
 		A0F964B71AF6A52300FCA5BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0F964B61AF6A52300FCA5BB /* Images.xcassets */; };
@@ -48,6 +49,7 @@
 		A07EA76B1AF7FB1000DF32B3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A07EA7711AF7FE9500DF32B3 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		A07EA7731AF7FFA200DF32B3 /* InterLect-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InterLect-Bridging-Header.h"; sourceTree = "<group>"; };
+		A0DDD79B1AFEBD0D0069C8F2 /* AudienceQuestionsTableViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudienceQuestionsTableViewCtrl.swift; sourceTree = "<group>"; };
 		A0F964AA1AF6A52300FCA5BB /* InterLect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterLect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F964AE1AF6A52300FCA5BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0F964AF1AF6A52300FCA5BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				4512C0341AF83DE70069C28B /* QuestionsTableViewCtrl.swift */,
+				A0DDD79B1AFEBD0D0069C8F2 /* AudienceQuestionsTableViewCtrl.swift */,
 				A0F964AF1AF6A52300FCA5BB /* AppDelegate.swift */,
 				A0F964B11AF6A52300FCA5BB /* ViewController.swift */,
 				A0F964D11AF6BB0C00FCA5BB /* CreateViewCtrl.swift */,
@@ -258,6 +261,7 @@
 			files = (
 				A0F964B21AF6A52300FCA5BB /* ViewController.swift in Sources */,
 				A0F964D41AF6BB4500FCA5BB /* WatchViewCtrl.swift in Sources */,
+				A0DDD79C1AFEBD0D0069C8F2 /* AudienceQuestionsTableViewCtrl.swift in Sources */,
 				4512C0351AF83DE70069C28B /* QuestionsTableViewCtrl.swift in Sources */,
 				A0F964B01AF6A52300FCA5BB /* AppDelegate.swift in Sources */,
 				A0F964DC1AF6BD3000FCA5BB /* DAOLecture.swift in Sources */,

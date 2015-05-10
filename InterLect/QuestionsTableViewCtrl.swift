@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 
 class QuestionsTableViewCtrl:UITableViewController {
-    
     var question = [String]()
-    var isPanelist:Bool?
     var nameLecture:String?
     var refreshCtrl:UIRefreshControl!
     let dao = DAOLecture()
@@ -23,12 +21,7 @@ class QuestionsTableViewCtrl:UITableViewController {
         if (self.nameLecture != nil) {
             dao.updateQuestions(self.nameLecture!)
         }
-        if (self.isPanelist != nil && self.isPanelist == true) {
-            self.question = questions
-        }
-        else if (self.isPanelist != nil && self.isPanelist == false) {
-            
-        }
+        self.question = questions
     }
     
     override func viewDidLoad() {

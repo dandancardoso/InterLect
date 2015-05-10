@@ -133,8 +133,26 @@ class DAOLecture {
                 //save in firebase
                 var post1Ref = ref.childByAutoId()
                 post1Ref.setValue(questionText)
+                self.audienceAddQuestion(lectureName, questionText: questionText)
             }
         }
+    }
+    
+    func audienceAddQuestion(lectureName:String,questionText:String) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var quests = self.audienceGetQuestions(lectureName)
+        quests.append(questionText)
+        defaults.setObject(quests, forKey: lectureName)
+    }
+    
+    func audienceGetQuestions(lectureName:String)->[String] {
+        var audQuestions = [String]()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let quests = defaults.arrayForKey(lectureName)
+        {
+            return quests as! [String]
+        }
+        return []
     }
 
 }

@@ -20,5 +20,6 @@ class AddQuestionViewCtrl:UIViewController {
             dao.addQuestion(self.lectureName!, questionText: self.question.text)
             dao.updateQuestions(self.lectureName!)
         }
+        self.question.text = ""
     }
 }

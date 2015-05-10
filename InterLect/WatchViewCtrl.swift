@@ -83,6 +83,25 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
                 self.messageFrame.removeFromSuperview()
             }
         }
+        if (self.role.selectedSegmentIndex == 0) {
+            self.isPanelist = true
+        } else {
+            self.isPanelist = false
+        }
+        if (self.isPanelist != nil && self.isPanelist == true)
+        {
+            var nextViewController = QuestionsTableViewCtrl()
+            if (self.shouldPerformSegueWithIdentifier("panelist", sender: sender)) {
+                performSegueWithIdentifier("panelist", sender: nil)
+            }
+        }
+        if (self.isPanelist != nil && self.isPanelist == false)
+        {
+            var nextViewController = AudienceQuestionsTableViewController()
+            if (self.shouldPerformSegueWithIdentifier("audience", sender: sender)) {
+                performSegueWithIdentifier("audience", sender: nil)
+            }
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -100,7 +119,7 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
         var daoLecture = DAOLecture()
         self.isAuthentic = daoLecture.authenticate(self.name.text,password: self.password.text,role:self.role.selectedSegmentIndex)
-        if identifier == "segueFromWatch" {
+        if identifier == "panelist" {
             if (self.password.text.isEmpty || self.name.text.isEmpty) {
                 
                 let alert = UIAlertView()
@@ -131,14 +150,15 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "segueFromWatch"
+        println(segue.identifier)
+        if segue.identifier == "panelist"
         {
             if let destinationVC = segue.destinationViewController as? QuestionsTableViewCtrl{
-                if (self.role.selectedSegmentIndex == 0) {
-                    destinationVC.isPanelist = true
-                } else {
-                    destinationVC.isPanelist = false
-                }
+                destinationVC.nameLecture = self.name.text
+            }
+        }
+        if (segue.identifier == "audience") {
+            if let destinationVC = segue.destinationViewController as? AudienceQuestionsTableViewController{
                 destinationVC.nameLecture = self.name.text
             }
         }
