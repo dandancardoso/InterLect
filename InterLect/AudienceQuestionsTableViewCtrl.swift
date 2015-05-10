@@ -12,6 +12,7 @@ import UIKit
 class AudienceQuestionsTableViewController:UITableViewController {
     var nameLecture:String?
     var question = [String]()
+    var refreshCtrl:UIRefreshControl!
     let dao = DAOLecture()
     
     @IBOutlet weak var addQuestion: UIBarButtonItem!
@@ -24,6 +25,11 @@ class AudienceQuestionsTableViewController:UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.refreshCtrl = UIRefreshControl()
+//        self.refreshCtrl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshCtrl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshCtrl)
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -43,11 +49,25 @@ class AudienceQuestionsTableViewController:UITableViewController {
         tableView.rowHeight = 70
         
         cell.textLabel?.text = self.question[indexPath.row]
-       // cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.textLabel?.textColor = UIColor.whiteColor()
         
         return cell
         
     }
+    
+    func refresh(sender:AnyObject){
+        
+        //code to refresh table
+        if (self.nameLecture != nil) {
+            dao.audienceGetQuestions(self.nameLecture!)
+        }
+        self.question = questions
+        
+        self.tableView.reloadData()
+        
+        self.refreshCtrl.endRefreshing()
+    }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segueFromAudienceQuestionsTableView"

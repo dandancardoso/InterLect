@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F88FD7B6929B8918959149BBE1087260BCCAE9D6</key>
-		<string>https://github.com/EduardoTT/InterLect.git</string>
+		<string>https://github.com/dandancardoso/InterLect.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>InterLect.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/EduardoTT/InterLect.git</string>
+	<string>https://github.com/dandancardoso/InterLect.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

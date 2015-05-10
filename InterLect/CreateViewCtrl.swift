@@ -58,9 +58,9 @@ class CreateViewCtrl:UIViewController, UITextFieldDelegate {
             if (self.panelistPassword.text.isEmpty || self.name.text.isEmpty || self.audiencePassword.text.isEmpty) {
                 
                 let alert = UIAlertView()
-                alert.title = "No Text"
-                alert.message = "Please enter text in all boxes!"
-                alert.addButtonWithTitle("Ok")
+                alert.title = "No text!"
+                alert.message = "Please enter text in all boxes."
+                alert.addButtonWithTitle("OK")
                 alert.show()
                 
                 result = false
@@ -68,9 +68,9 @@ class CreateViewCtrl:UIViewController, UITextFieldDelegate {
             else if(!self.nameAvailable) {
                 
                 let alert = UIAlertView()
-                alert.title = "Existing Name"
-                alert.message = "Name already been used, please choose another one."
-                alert.addButtonWithTitle("Ok")
+                alert.title = "Existing name!"
+                alert.message = "Name has already been used, please choose another one."
+                alert.addButtonWithTitle("OK")
                 alert.show()
                 
                 result = false
@@ -78,15 +78,13 @@ class CreateViewCtrl:UIViewController, UITextFieldDelegate {
             else {
                 
                 let alert = UIAlertView()
-                alert.title = "Saved"
-                alert.message = "Good Lecture!"
-                alert.addButtonWithTitle("Ok")
+                alert.title = "Lecture saved!"
+                alert.message = "Have a great talk!"
+                alert.addButtonWithTitle("OK")
                 alert.show()
                 result = true
             }
         }
         return result
     }
-
-    
 }

@@ -30,7 +30,7 @@ class QuestionsTableViewCtrl:UITableViewController {
 //        self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         self.refreshCtrl = UIRefreshControl()
-        self.refreshCtrl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+//        self.refreshCtrl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshCtrl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshCtrl)
         

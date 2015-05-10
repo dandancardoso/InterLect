@@ -89,6 +89,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45DF9DAB1AFFCB9400D22C0E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4512C0361AF83E3D0069C28B /* LaunchScreen.xib */,
+				4512C02F1AF83C5F0069C28B /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		45DF9DAC1AFFCBB000D22C0E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A0F964D91AF6BD0500FCA5BB /* Lecture.swift */,
+				45DF9DAD1AFFCBCD00D22C0E /* DAO */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		45DF9DAD1AFFCBCD00D22C0E /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				A0F964DB1AF6BD3000FCA5BB /* DAOLecture.swift */,
+			);
+			name = DAO;
+			sourceTree = "<group>";
+		};
+		45DF9DAE1AFFCC5A00D22C0E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				45DF9DB01AFFCD1700D22C0E /* PanelistCtrl */,
+				45DF9DAF1AFFCD0700D22C0E /* AudienceCtrl */,
+				A0F964B11AF6A52300FCA5BB /* ViewController.swift */,
+				A0F964D11AF6BB0C00FCA5BB /* CreateViewCtrl.swift */,
+				A0F964D31AF6BB4500FCA5BB /* WatchViewCtrl.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		45DF9DAF1AFFCD0700D22C0E /* AudienceCtrl */ = {
+			isa = PBXGroup;
+			children = (
+				A0DDD79B1AFEBD0D0069C8F2 /* AudienceQuestionsTableViewCtrl.swift */,
+				A0F964D71AF6BBCE00FCA5BB /* AddQuestionViewCtrl.swift */,
+			);
+			name = AudienceCtrl;
+			sourceTree = "<group>";
+		};
+		45DF9DB01AFFCD1700D22C0E /* PanelistCtrl */ = {
+			isa = PBXGroup;
+			children = (
+				4512C0341AF83DE70069C28B /* QuestionsTableViewCtrl.swift */,
+			);
+			name = PanelistCtrl;
+			sourceTree = "<group>";
+		};
 		A0F964A11AF6A52300FCA5BB = {
 			isa = PBXGroup;
 			children = (
@@ -116,17 +171,10 @@
 		A0F964AC1AF6A52300FCA5BB /* InterLect */ = {
 			isa = PBXGroup;
 			children = (
-				4512C0341AF83DE70069C28B /* QuestionsTableViewCtrl.swift */,
-				A0DDD79B1AFEBD0D0069C8F2 /* AudienceQuestionsTableViewCtrl.swift */,
 				A0F964AF1AF6A52300FCA5BB /* AppDelegate.swift */,
-				A0F964B11AF6A52300FCA5BB /* ViewController.swift */,
-				A0F964D11AF6BB0C00FCA5BB /* CreateViewCtrl.swift */,
-				A0F964D31AF6BB4500FCA5BB /* WatchViewCtrl.swift */,
-				A0F964D71AF6BBCE00FCA5BB /* AddQuestionViewCtrl.swift */,
-				A0F964D91AF6BD0500FCA5BB /* Lecture.swift */,
-				A0F964DB1AF6BD3000FCA5BB /* DAOLecture.swift */,
-				4512C0361AF83E3D0069C28B /* LaunchScreen.xib */,
-				4512C02F1AF83C5F0069C28B /* Main.storyboard */,
+				45DF9DAC1AFFCBB000D22C0E /* Model */,
+				45DF9DAB1AFFCB9400D22C0E /* View */,
+				45DF9DAE1AFFCC5A00D22C0E /* Controller */,
 				A0F964B61AF6A52300FCA5BB /* Images.xcassets */,
 				A0F964AD1AF6A52300FCA5BB /* Supporting Files */,
 				A07EA7731AF7FFA200DF32B3 /* InterLect-Bridging-Header.h */,
