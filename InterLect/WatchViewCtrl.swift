@@ -38,7 +38,7 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     }
     
     func progressBarDisplayer(msg:String, _ indicator:Bool ) {
-        println(msg)
+        //println(msg)
         strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 200, height: 50))
         strLabel.text = msg
         strLabel.textColor = UIColor.whiteColor()
@@ -150,7 +150,6 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println(segue.identifier)
         if segue.identifier == "panelist"
         {
             if let destinationVC = segue.destinationViewController as? QuestionsTableViewCtrl{

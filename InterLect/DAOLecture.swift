@@ -11,6 +11,26 @@ import Foundation
 var dataBase:FDataSnapshot?
 var questions = [String]()
 
+extension String  {
+    var md5: String! {
+        let str = self.cStringUsingEncoding(NSUTF8StringEncoding)
+        let strLen = CC_LONG(self.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+        let digestLen = Int(CC_MD5_DIGEST_LENGTH)
+        let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
+        
+        CC_MD5(str!, strLen, result)
+        
+        var hash = NSMutableString()
+        for i in 0..<digestLen {
+            hash.appendFormat("%02x", result[i])
+        }
+        
+        result.dealloc(digestLen)
+        
+        return String(format: hash as String)
+    }
+}
+
 class DAOLecture {
     
     let rolePanelist = 0
@@ -19,7 +39,7 @@ class DAOLecture {
     func saveLecture(lecture:Lecture)->Bool {
         //verificar se pode criar!
         var refLectures = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Lectures")
-        var passwords = ["panelist": lecture.panelistPassword!, "audience": lecture.audiencePassword!]
+        var passwords = ["panelist": lecture.panelistPassword!.md5, "audience": lecture.audiencePassword!.md5]
         var lec = refLectures.childByAppendingPath(lecture.name)
         lec.setValue(passwords)
         
@@ -56,10 +76,10 @@ class DAOLecture {
                 {
                     var panelist = dict["panelist"] as! String
                     var audience = dict["audience"] as! String
-                    if (role == rolePanelist && password == panelist) {
+                    if (role == rolePanelist && password.md5 == panelist) {
                         result = true
                     }
-                    if (role == roleAudience && password == audience) {
+                    if (role == roleAudience && password.md5 == audience) {
                         result = true
                     }
                 }
