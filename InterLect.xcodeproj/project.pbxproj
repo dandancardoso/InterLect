@@ -10,6 +10,9 @@
 		4512C0311AF83C5F0069C28B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4512C02F1AF83C5F0069C28B /* Main.storyboard */; };
 		4512C0351AF83DE70069C28B /* QuestionsTableViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512C0341AF83DE70069C28B /* QuestionsTableViewCtrl.swift */; };
 		4512C0381AF83E3D0069C28B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4512C0361AF83E3D0069C28B /* LaunchScreen.xib */; };
+		45A30DC31B004F6A00F599AC /* TutorialPageViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A30DC21B004F6A00F599AC /* TutorialPageViewCtrl.swift */; };
+		45A30DC51B00547000F599AC /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A30DC41B00547000F599AC /* TutorialPage.swift */; };
+		45A30DC71B005BF300F599AC /* PageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A30DC61B005BF300F599AC /* PageStyle.swift */; };
 		A07EA7641AF7FAE000DF32B3 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A07EA7631AF7FAE000DF32B3 /* libicucore.dylib */; };
 		A07EA7661AF7FAEF00DF32B3 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A07EA7651AF7FAEF00DF32B3 /* libc++.dylib */; };
 		A07EA7681AF7FAF900DF32B3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07EA7671AF7FAF900DF32B3 /* CFNetwork.framework */; };
@@ -42,6 +45,9 @@
 		4512C0301AF83C5F0069C28B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4512C0341AF83DE70069C28B /* QuestionsTableViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewCtrl.swift; sourceTree = "<group>"; };
 		4512C0371AF83E3D0069C28B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		45A30DC21B004F6A00F599AC /* TutorialPageViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewCtrl.swift; sourceTree = "<group>"; };
+		45A30DC41B00547000F599AC /* TutorialPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
+		45A30DC61B005BF300F599AC /* PageStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageStyle.swift; sourceTree = "<group>"; };
 		A07EA7631AF7FAE000DF32B3 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		A07EA7651AF7FAEF00DF32B3 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		A07EA7671AF7FAF900DF32B3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -101,6 +107,8 @@
 		45DF9DAC1AFFCBB000D22C0E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				45A30DC41B00547000F599AC /* TutorialPage.swift */,
+				45A30DC61B005BF300F599AC /* PageStyle.swift */,
 				A0F964D91AF6BD0500FCA5BB /* Lecture.swift */,
 				45DF9DAD1AFFCBCD00D22C0E /* DAO */,
 			);
@@ -121,6 +129,7 @@
 				45DF9DB01AFFCD1700D22C0E /* PanelistCtrl */,
 				45DF9DAF1AFFCD0700D22C0E /* AudienceCtrl */,
 				A0F964B11AF6A52300FCA5BB /* ViewController.swift */,
+				45A30DC21B004F6A00F599AC /* TutorialPageViewCtrl.swift */,
 				A0F964D11AF6BB0C00FCA5BB /* CreateViewCtrl.swift */,
 				A0F964D31AF6BB4500FCA5BB /* WatchViewCtrl.swift */,
 			);
@@ -309,6 +318,9 @@
 			files = (
 				A0F964B21AF6A52300FCA5BB /* ViewController.swift in Sources */,
 				A0F964D41AF6BB4500FCA5BB /* WatchViewCtrl.swift in Sources */,
+				45A30DC51B00547000F599AC /* TutorialPage.swift in Sources */,
+				45A30DC31B004F6A00F599AC /* TutorialPageViewCtrl.swift in Sources */,
+				45A30DC71B005BF300F599AC /* PageStyle.swift in Sources */,
 				A0DDD79C1AFEBD0D0069C8F2 /* AudienceQuestionsTableViewCtrl.swift in Sources */,
 				4512C0351AF83DE70069C28B /* QuestionsTableViewCtrl.swift in Sources */,
 				A0F964B01AF6A52300FCA5BB /* AppDelegate.swift in Sources */,

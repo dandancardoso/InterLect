@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ANb-uE-41n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dd3-eW-Jo4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -133,7 +133,7 @@
                                     </mask>
                                 </variation>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaY-bQ-0qf">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaY-bQ-0qf">
                                 <rect key="frame" x="0.0" y="0.0" width="508" height="470"/>
                                 <color key="backgroundColor" red="0.2784313725" green="0.33725490200000002" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -518,10 +518,134 @@
             </objects>
             <point key="canvasLocation" x="2358" y="-65"/>
         </scene>
+        <!--Page Style-->
+        <scene sceneID="aed-IX-vaY">
+            <objects>
+                <pageViewController storyboardIdentifier="PageController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="DHn-mk-XVq" customClass="PageStyle" customModule="InterLect" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GET-Lr-0zr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1983" y="955"/>
+        </scene>
+        <!--Tutorial Page View Ctrl-->
+        <scene sceneID="Thu-1H-XNT">
+            <objects>
+                <viewController id="dd3-eW-Jo4" customClass="TutorialPageViewCtrl" customModule="InterLect" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K0I-4v-6ov"/>
+                        <viewControllerLayoutGuide type="bottom" id="5bI-8S-ish"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l2m-Pw-o1G">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVm-r0-NG1">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2po-lc-kNd"/>
+                                    <constraint firstAttribute="width" constant="92" id="VTD-62-UbL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleColor" red="1" green="0.60201226590000001" blue="0.2298628466" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2po-lc-kNd"/>
+                                        <exclude reference="VTD-62-UbL"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="2po-lc-kNd"/>
+                                        <include reference="VTD-62-UbL"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="ANb-uE-41n" kind="show" id="6cN-gx-nZw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="hVm-r0-NG1" firstAttribute="leading" secondItem="l2m-Pw-o1G" secondAttribute="leading" constant="217" id="1X4-7T-AB3"/>
+                            <constraint firstItem="hVm-r0-NG1" firstAttribute="top" secondItem="K0I-4v-6ov" secondAttribute="bottom" constant="514" id="1sG-Kr-FmX"/>
+                            <constraint firstAttribute="trailing" secondItem="hVm-r0-NG1" secondAttribute="trailing" constant="11" id="QJk-jA-jyH"/>
+                            <constraint firstItem="5bI-8S-ish" firstAttribute="top" secondItem="hVm-r0-NG1" secondAttribute="bottom" constant="4" id="mfB-vK-VfN"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="hVm-r0-NG1"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="mfB-vK-VfN"/>
+                                <exclude reference="1X4-7T-AB3"/>
+                                <exclude reference="1sG-Kr-FmX"/>
+                                <exclude reference="QJk-jA-jyH"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="hVm-r0-NG1"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="mfB-vK-VfN"/>
+                                <include reference="1X4-7T-AB3"/>
+                                <include reference="1sG-Kr-FmX"/>
+                                <include reference="QJk-jA-jyH"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fkl-7L-8qE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1402.5" y="336"/>
+        </scene>
+        <!--Tutorial Page-->
+        <scene sceneID="Zms-oi-KSN">
+            <objects>
+                <viewController storyboardIdentifier="ItemController" id="9YG-ug-ixi" customClass="TutorialPage" customModule="InterLect" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OAP-9h-uxu"/>
+                        <viewControllerLayoutGuide type="bottom" id="fOv-K8-3i2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MU1-5x-2oG">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tuy-2h-VkU">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Tuy-2h-VkU"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Tuy-2h-VkU"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="contentImageView" destination="Tuy-2h-VkU" id="XX6-ie-Ftt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4xc-Xf-JNI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1402.5" y="955"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="KP8-Nf-wDT">
             <objects>
                 <navigationController id="ANb-uE-41n" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="CSA-Rb-JCK"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="t7q-Pf-204">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -942,7 +1066,7 @@
         <image name="Watch" width="85" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jr7-xF-v7H"/>
+        <segue reference="AWJ-G5-he4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.47849589650000002" green="0.47849589650000002" blue="0.47849589650000002" alpha="1" colorSpace="calibratedRGB"/>
 </document>
