@@ -18,9 +18,7 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     var messageFrame = UIView()
     var activityIndicator = UIActivityIndicatorView()
     var strLabel = UILabel()
-    
     var isPanelist:Bool?
-    var isAuthentic = false
     
     
     override func viewWillAppear(animated: Bool) {
@@ -62,8 +60,8 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
         if (self.password == nil || self.password.text == "" || self.name == nil || self.name.text == "") {
             return
         }
-        self.isAuthentic = daoLecture.authenticate(self.name.text,password: self.password.text,role:self.role.selectedSegmentIndex)
-        if (!self.isAuthentic) {
+        var isAuthentic = daoLecture.authenticate(self.name.text,password: self.password.text,role:self.role.selectedSegmentIndex)
+        if (!isAuthentic) {
             return
         } else {
             var lecture = daoLecture.getLecture(self.name.text)
@@ -118,31 +116,29 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     
     override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
         var daoLecture = DAOLecture()
-        self.isAuthentic = daoLecture.authenticate(self.name.text,password: self.password.text,role:self.role.selectedSegmentIndex)
-        if identifier == "panelist" {
-            if (self.password.text.isEmpty || self.name.text.isEmpty) {
-                
-                let alert = UIAlertView()
-                alert.title = "No Text"
-                alert.message = "Please enter text in all boxes!"
-                alert.addButtonWithTitle("Ok")
-                alert.show()
-                
-                return false
-            }
-            else if(!self.isAuthentic) {
-                
-                let alert = UIAlertView()
-                alert.title = "Authentication Error"
-                alert.message = "Name or password incorrect"
-                alert.addButtonWithTitle("Ok")
-                alert.show()
-                
-                return false
-            }
-            else {
-                return true
-            }
+        var isAuthentic = daoLecture.authenticate(self.name.text,password: self.password.text,role:self.role.selectedSegmentIndex)
+        if (self.password.text.isEmpty || self.name.text.isEmpty) {
+            
+            let alert = UIAlertView()
+            alert.title = "No Text"
+            alert.message = "Please enter text in all boxes!"
+            alert.addButtonWithTitle("Ok")
+            alert.show()
+            
+            return false
+        }
+        else if(!isAuthentic) {
+            
+            let alert = UIAlertView()
+            alert.title = "Authentication Error"
+            alert.message = "Name or password incorrect"
+            alert.addButtonWithTitle("Ok")
+            alert.show()
+            
+            return false
+        }
+        else {
+            return true
         }
         
         // by default, transition
