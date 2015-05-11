@@ -117,11 +117,13 @@ class DAOLecture {
         var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(name)")
         if (ref != nil) {
             ref.observeEventType(.Value, withBlock: { snapshot in
-                questions = [String]()
-                var dict = snapshot.value as! NSDictionary
-                for question in dict {
-                    if (question.value as! String != "" || question.key as! String != "ignore") {
-                        questions.append(question.value as! String)
+                if (snapshot.exists()) {
+                    questions = [String]()
+                    var dict = snapshot.value as! NSDictionary
+                    for question in dict {
+                        if (question.value as! String != "" || question.key as! String != "ignore") {
+                            questions.append(question.value as! String)
+                        }
                     }
                 }
             })
@@ -132,13 +134,15 @@ class DAOLecture {
         var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(lectureName)")
         if (ref != nil) {
             ref.observeEventType(.Value, withBlock: { snapshot in
-                var dic : NSDictionary = snapshot.value as! NSDictionary
-                for q in dic {
-                    if (questionText == q.value as! String) {
-                        var r = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(lectureName)/\(q.key)")
-                        r.removeValue();
-                        //why this break doesn't work? it still removes two questions when they are equal.
-                        break
+                if (snapshot.exists()) {
+                    var dic : NSDictionary = snapshot.value as! NSDictionary
+                    for q in dic {
+                        if (questionText == q.value as! String) {
+                            var r = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(lectureName)/\(q.key)")
+                            r.removeValue();
+                            //why this break doesn't work? it still removes two questions when they are equal.
+                            break
+                        }
                     }
                 }
             })
