@@ -537,6 +537,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5bI-8S-ish"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="l2m-Pw-o1G">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVm-r0-NG1">
@@ -611,6 +612,7 @@
                         <viewControllerLayoutGuide type="bottom" id="fOv-K8-3i2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MU1-5x-2oG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tuy-2h-VkU">
@@ -682,7 +684,7 @@
                                     <constraint firstAttribute="width" constant="320" id="bb9-o8-jrf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                <state key="normal" title=" Watch Lecture" image="Watch" backgroundImage="Background2">
+                                <state key="normal" title=" Enter Lecture" image="Watch" backgroundImage="Background2">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="default">
