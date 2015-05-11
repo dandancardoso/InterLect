@@ -42,7 +42,7 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
         strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 200, height: 50))
         strLabel.text = msg
         strLabel.textColor = UIColor.whiteColor()
-        messageFrame = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25 , width: 180, height: 50))
+        messageFrame = UIView(frame: CGRect(x: view.frame.midX - 65, y: view.frame.midY - 25 , width: 130, height: 50))
         messageFrame.layer.cornerRadius = 15
         messageFrame.backgroundColor = UIColor(white: 0, alpha: 0.7)
         if indicator {
@@ -75,7 +75,7 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     
     @IBAction func watchLecture(sender: AnyObject) {
         
-        progressBarDisplayer("Loading data", true)
+        progressBarDisplayer("Loading", true)
         
         dispatch_async(dispatch_get_main_queue()) {
             self.loadingData()
