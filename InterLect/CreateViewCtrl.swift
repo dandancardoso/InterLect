@@ -52,6 +52,14 @@ class CreateViewCtrl:UIViewController, UITextFieldDelegate {
         return true
     }
     
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+        self.name.resignFirstResponder()
+        self.panelistPassword.resignFirstResponder()
+        self.audiencePassword.resignFirstResponder()
+    }
+    
     override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
         var result = false
         if identifier == "segueFromCreate" {

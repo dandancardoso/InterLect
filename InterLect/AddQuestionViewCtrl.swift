@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class AddQuestionViewCtrl:UIViewController, UITextFieldDelegate {
+class AddQuestionViewCtrl:UIViewController {
     
-    @IBOutlet weak var question: UITextField!
+    @IBOutlet weak var question: UITextView!
     var lectureName:String?
     
     var messageFrame = UIView()
@@ -69,9 +69,15 @@ class AddQuestionViewCtrl:UIViewController, UITextFieldDelegate {
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+       self.question.resignFirstResponder()
     }
-
+    
+    func textView(textView: UITextView,  shouldChangeTextInRange range:NSRange, replacementText text:NSString ) -> Bool {
+         let COMMENTS_LIMIT = 10
+        return count(question.text) + (text.length - range.length) <= COMMENTS_LIMIT;
+    }
+    
 }

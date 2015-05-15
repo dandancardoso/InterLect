@@ -106,6 +106,13 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+        self.password.resignFirstResponder()
+        self.name.resignFirstResponder()
+    }
 
     @IBAction func editingDidEnd(sender: AnyObject) {
         var daoLecture = DAOLecture()
