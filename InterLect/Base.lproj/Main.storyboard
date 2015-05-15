@@ -413,6 +413,9 @@
                                         <include reference="vSD-Wm-4df"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="THA-3b-NIW" id="Uyn-05-VEA"/>
+                                </connections>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GrayLayer" translatesAutoresizingMaskIntoConstraints="NO" id="osQ-nY-iGa">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -547,6 +550,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="arrow" destination="1hq-xW-tog" id="DZu-wa-TBl"/>
                         <outlet property="question" destination="jJZ-4e-0ge" id="cJ3-eX-5Tz"/>
                     </connections>
                 </viewController>

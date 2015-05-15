@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 
-class AddQuestionViewCtrl:UIViewController {
+class AddQuestionViewCtrl:UIViewController,UITextViewDelegate {
     
     @IBOutlet weak var question: UITextView!
+    @IBOutlet weak var arrow: UIImageView!
     var lectureName:String?
     
     var messageFrame = UIView()
@@ -72,12 +73,13 @@ class AddQuestionViewCtrl:UIViewController {
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
-       self.question.resignFirstResponder()
+        self.question.resignFirstResponder()
     }
     
-    func textView(textView: UITextView,  shouldChangeTextInRange range:NSRange, replacementText text:NSString ) -> Bool {
-         let COMMENTS_LIMIT = 10
-        return count(question.text) + (text.length - range.length) <= COMMENTS_LIMIT;
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        self.arrow.hidden = true
+        return true
     }
-    
+ 
+
 }
