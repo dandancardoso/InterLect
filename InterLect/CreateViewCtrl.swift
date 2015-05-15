@@ -19,8 +19,8 @@ class CreateViewCtrl:UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        var daoLecture = DAOLecture()
-        daoLecture.updateDataBase()
+//        var daoLecture = DAOLecture()
+//        daoLecture.updateDataBase()
     }
     
     override func viewDidLoad() {
@@ -64,6 +64,15 @@ class CreateViewCtrl:UIViewController, UITextFieldDelegate {
                 alert.show()
                 
                 result = false
+            }
+            else if (questions == []) {
+                let alert = UIAlertView()
+                alert.title = "Connection Error"
+                alert.message = "Check your connection or try again"
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                
+                return false
             }
             else if(!self.nameAvailable) {
                 

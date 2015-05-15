@@ -18,9 +18,9 @@ class QuestionsTableViewCtrl:UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if (self.nameLecture != nil) {
-            dao.updateQuestions(self.nameLecture!)
-        }
+//        if (self.nameLecture != nil) {
+//            dao.updateQuestions(self.nameLecture!)
+//        }
         self.question = questions
     }
     
@@ -72,9 +72,9 @@ class QuestionsTableViewCtrl:UITableViewController {
     func refresh(sender:AnyObject){
         
         //code to refresh table
-        if (self.nameLecture != nil) {
-            dao.updateQuestions(self.nameLecture!)
-        }
+//        if (self.nameLecture != nil) {
+//            dao.updateQuestions(self.nameLecture!)
+//        }
         self.question = questions
         
         self.tableView.reloadData()

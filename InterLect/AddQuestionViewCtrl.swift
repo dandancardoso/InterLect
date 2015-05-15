@@ -39,7 +39,7 @@ class AddQuestionViewCtrl:UIViewController, UITextFieldDelegate {
             let alert = UIAlertView()
             
             dao.addQuestion(self.lectureName!, questionText: self.question.text)
-            dao.updateQuestions(self.lectureName!)
+            //dao.updateQuestions(self.lectureName!)
             
             alert.title = "Question saved!"
             alert.message = "Now just wait your answer."

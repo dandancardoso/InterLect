@@ -10,6 +10,7 @@ import Foundation
 
 var dataBase:FDataSnapshot?
 var questions = [String]()
+private var handler:UInt?
 
 extension String  {
     var md5: String! {
@@ -114,9 +115,13 @@ class DAOLecture {
     }
     
     func updateQuestions(name:String) {
+        questions = [String]()
         var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(name)")
         if (ref != nil) {
-            ref.observeEventType(.Value, withBlock: { snapshot in
+            if (handler != nil) {
+                ref.removeObserverWithHandle(handler!)
+            }
+            handler = ref.observeEventType(.Value, withBlock: { snapshot in
                 if (snapshot.exists()) {
                     questions = [String]()
                     var dict = snapshot.value as! NSDictionary
@@ -133,7 +138,7 @@ class DAOLecture {
     func deleteQuestion(lectureName:String,questionText:String) {
         var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(lectureName)")
         if (ref != nil) {
-            ref.observeEventType(.Value, withBlock: { snapshot in
+            ref.observeSingleEventOfType(.Value, withBlock: { snapshot in
                 if (snapshot.exists()) {
                     var dic : NSDictionary = snapshot.value as! NSDictionary
                     for q in dic {

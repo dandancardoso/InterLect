@@ -59,10 +59,8 @@ class AudienceQuestionsTableViewController:UITableViewController {
         
         //code to refresh table
         if (self.nameLecture != nil) {
-            dao.audienceGetQuestions(self.nameLecture!)
+            self.question = dao.audienceGetQuestions(self.nameLecture!)
         }
-        self.question = questions
-        
         self.tableView.reloadData()
         
         self.refreshCtrl.endRefreshing()

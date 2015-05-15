@@ -23,8 +23,8 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        var daoLecture = DAOLecture()
-        daoLecture.updateDataBase()
+//        var daoLecture = DAOLecture()
+//        daoLecture.updateDataBase()
     }
     
     override func viewDidLoad() {
@@ -64,8 +64,8 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
         if (!isAuthentic) {
             return
         } else {
-            var lecture = daoLecture.getLecture(self.name.text)
-            daoLecture.updateQuestions(self.name.text)
+            //var lecture = daoLecture.getLecture(self.name.text)
+            //daoLecture.updateQuestions(self.name.text)
             return
         }
         
@@ -127,7 +127,16 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
             
             return false
         }
-        else if(!isAuthentic) {
+        else if (questions == []) {
+            let alert = UIAlertView()
+            alert.title = "Connection Error"
+            alert.message = "Check your connection or try again"
+            alert.addButtonWithTitle("Ok")
+            alert.show()
+            
+            return false
+        }
+        else if (!isAuthentic) {
             
             let alert = UIAlertView()
             alert.title = "Authentication Error"
@@ -140,9 +149,6 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
         else {
             return true
         }
-        
-        // by default, transition
-        return true
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
