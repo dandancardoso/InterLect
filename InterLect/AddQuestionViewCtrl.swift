@@ -43,7 +43,7 @@ class AddQuestionViewCtrl:UIViewController,UITextViewDelegate {
             //dao.updateQuestions(self.lectureName!)
             
             alert.title = "Question saved!"
-            alert.message = "Now just wait your answer."
+            alert.message = "The question was sent to the panelist."
             alert.addButtonWithTitle("OK")
             alert.show()
             

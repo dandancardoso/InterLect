@@ -116,8 +116,8 @@
                                     <constraint firstAttribute="height" constant="28" id="IGR-ep-LSK"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Panelist"/>
                                     <segment title="Audience"/>
+                                    <segment title="Panelist"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="default">
@@ -502,19 +502,19 @@
                                 <exclude reference="1hq-xW-tog"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="erg-wu-CMg"/>
-                                <exclude reference="fWj-R0-p4s"/>
-                                <exclude reference="omG-9p-3oc"/>
+                                <exclude reference="QfK-Nj-gRL"/>
+                                <exclude reference="TSK-GF-cf0"/>
+                                <exclude reference="PEz-D4-97K"/>
+                                <exclude reference="d8n-lu-o5q"/>
                                 <exclude reference="2HX-0n-h9n"/>
                                 <exclude reference="bxn-Vs-H9A"/>
                                 <exclude reference="sk9-1h-6fu"/>
-                                <exclude reference="PEz-D4-97K"/>
-                                <exclude reference="d8n-lu-o5q"/>
                                 <exclude reference="RUa-dJ-fZW"/>
                                 <exclude reference="Xpk-Gb-Ipe"/>
                                 <exclude reference="y1t-Gd-0Gy"/>
-                                <exclude reference="QfK-Nj-gRL"/>
-                                <exclude reference="TSK-GF-cf0"/>
+                                <exclude reference="erg-wu-CMg"/>
+                                <exclude reference="fWj-R0-p4s"/>
+                                <exclude reference="omG-9p-3oc"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -525,19 +525,19 @@
                                 <include reference="1hq-xW-tog"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="erg-wu-CMg"/>
-                                <include reference="fWj-R0-p4s"/>
-                                <include reference="omG-9p-3oc"/>
+                                <include reference="QfK-Nj-gRL"/>
+                                <include reference="TSK-GF-cf0"/>
+                                <include reference="PEz-D4-97K"/>
+                                <include reference="d8n-lu-o5q"/>
                                 <include reference="2HX-0n-h9n"/>
                                 <include reference="bxn-Vs-H9A"/>
                                 <include reference="sk9-1h-6fu"/>
-                                <include reference="PEz-D4-97K"/>
-                                <include reference="d8n-lu-o5q"/>
                                 <include reference="RUa-dJ-fZW"/>
                                 <include reference="Xpk-Gb-Ipe"/>
                                 <include reference="y1t-Gd-0Gy"/>
-                                <include reference="QfK-Nj-gRL"/>
-                                <include reference="TSK-GF-cf0"/>
+                                <include reference="erg-wu-CMg"/>
+                                <include reference="fWj-R0-p4s"/>
+                                <include reference="omG-9p-3oc"/>
                             </mask>
                         </variation>
                     </view>
@@ -724,7 +724,7 @@
                                     <constraint firstAttribute="width" constant="320" id="bb9-o8-jrf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                <state key="normal" title=" Enter Lecture" image="Watch" backgroundImage="Background2">
+                                <state key="normal" title=" Enter" image="Watch" backgroundImage="Background2">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="default">
@@ -752,7 +752,7 @@
                                     <constraint firstAttribute="height" constant="252" id="vOa-rh-uSP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                <state key="normal" title=" Create Lecture" image="Create" backgroundImage="Background">
+                                <state key="normal" title=" Create" image="Create" backgroundImage="Background">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1108,7 +1108,7 @@
         <image name="Watch" width="85" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jr7-xF-v7H"/>
+        <segue reference="AWJ-G5-he4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.47849589650000002" green="0.47849589650000002" blue="0.47849589650000002" alpha="1" colorSpace="calibratedRGB"/>
 </document>

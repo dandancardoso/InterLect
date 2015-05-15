@@ -81,7 +81,7 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
                 self.messageFrame.removeFromSuperview()
             }
         }
-        if (self.role.selectedSegmentIndex == 0) {
+        if (self.role.selectedSegmentIndex == 1) {
             self.isPanelist = true
         } else {
             self.isPanelist = false

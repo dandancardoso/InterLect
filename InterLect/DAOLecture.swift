@@ -34,8 +34,8 @@ extension String  {
 
 class DAOLecture {
     
-    let rolePanelist = 0
-    let roleAudience = 1
+    let rolePanelist = 1
+    let roleAudience = 0
     
     func saveLecture(lecture:Lecture)->Bool {
         //verificar se pode criar!
