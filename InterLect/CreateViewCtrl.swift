@@ -73,7 +73,7 @@ class CreateViewCtrl:UIViewController, UITextFieldDelegate {
                 
                 result = false
             }
-            else if (questions == []) {
+            else if (dataBase == nil) {
                 let alert = UIAlertView()
                 alert.title = "Connection Error"
                 alert.message = "Check your connection or try again"

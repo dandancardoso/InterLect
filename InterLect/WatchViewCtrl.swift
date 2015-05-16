@@ -23,6 +23,9 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        if (!self.name.hasText() || !self.password.hasText()) {
+            questions = [String]()
+        }
 //        var daoLecture = DAOLecture()
 //        daoLecture.updateDataBase()
     }
@@ -116,7 +119,7 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
 
     @IBAction func editingDidEnd(sender: AnyObject) {
         var daoLecture = DAOLecture()
-        if (self.name != nil && self.name.text != "") {
+        if (self.name.hasText()) {
             daoLecture.updateQuestions(self.name.text)
         }
     }
@@ -134,7 +137,7 @@ class WatchViewCtrl:UIViewController, UITextFieldDelegate {
             
             return false
         }
-        else if (questions == []) {
+        else if (dataBase == nil) {
             let alert = UIAlertView()
             alert.title = "Connection Error"
             alert.message = "Check your connection or try again"
