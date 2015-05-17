@@ -114,6 +114,48 @@ class DAOLecture {
         return lecture
     }
     
+    func dateOneOlder(dateOne:NSDate,dateTwo:NSDate)->Bool {
+        switch (dateOne.compare(dateTwo)){
+            case NSComparisonResult.OrderedAscending:
+                return true
+            case NSComparisonResult.OrderedSame:
+                return false
+            case NSComparisonResult.OrderedDescending:
+                return false
+        }
+    }
+    
+    func sortByDate(array:[NSDate])->[NSDate] {
+        var arrayCopy = [AnyObject]()
+        arrayCopy = array as Array<AnyObject>
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy:MM:dd:HH:mm:ss:SS"
+        for (var j=0;j<arrayCopy.count;j++) {
+            for (var i=0;i<arrayCopy.count-1;i++) {
+                var date1 = dateFormatter.dateFromString(arrayCopy[i] as! String)
+                var date2 = dateFormatter.dateFromString(arrayCopy[i+1] as! String)
+                if (dateOneOlder(date1!, dateTwo: date2!)) {
+                    var temp: (AnyObject) = arrayCopy[i]
+                    arrayCopy[i] = arrayCopy[i+1]
+                    arrayCopy[i+1] = temp
+                }
+            }
+        }
+        return arrayCopy as! [NSDate]
+    }
+    
+    func arrayFromDictSortedByDate(dict:NSDictionary)->[String] {
+        var dictCopy: AnyObject = dict.mutableCopy()
+        var keys = dict.allKeys as Array<AnyObject>
+        //keys.sort(dateOneMoreRecent)
+        keys = sortByDate(keys as! [NSDate])
+        var array = [AnyObject]()
+        for key in keys {
+            array.append(dictCopy[(key as! String)] as! String)
+        }
+        return array as! [String]
+    }
+    
     func updateQuestions(name:String) {
         questions = [String]()
         var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(name)")
@@ -123,13 +165,9 @@ class DAOLecture {
             }
             handler = ref.observeEventType(.Value, withBlock: { snapshot in
                 if (snapshot.exists()) {
-                    questions = [String]()
-                    var dict = snapshot.value as! NSDictionary
-                    for question in dict {
-                        if (question.value as! String != "" || question.key as! String != "ignore") {
-                            questions.append(question.value as! String)
-                        }
-                    }
+                    var dict = snapshot.value as! NSMutableDictionary
+                    dict.removeObjectForKey("ignore")
+                    questions = self.arrayFromDictSortedByDate(dict) as [String]
                 }
             })
         }
@@ -154,13 +192,19 @@ class DAOLecture {
         }
     }
     
+    func stringFromCurrentDate()->String {
+        var date = NSDate()
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy:MM:dd:HH:mm:ss:SS"
+        return dateFormatter.stringFromDate(date)
+    }
     
     func addQuestion(lectureName:String,questionText:String) {
         if (questionText != "") {
             var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(lectureName)")
             if (ref != nil) {
-                //save in firebase
-                var post1Ref = ref.childByAutoId()
+                var key = stringFromCurrentDate()
+                var post1Ref = ref.childByAppendingPath(key)
                 post1Ref.setValue(questionText)
                 self.audienceAddQuestion(lectureName, questionText: questionText)
             }
@@ -175,13 +219,23 @@ class DAOLecture {
     }
     
     func audienceGetQuestions(lectureName:String)->[String] {
-        var audQuestions = [String]()
         let defaults = NSUserDefaults.standardUserDefaults()
         if let quests = defaults.arrayForKey(lectureName)
         {
             return quests as! [String]
         }
         return []
+    }
+    
+    func audienceDeleteQuestion(lectureName:String, questionText:String) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var quests = self.audienceGetQuestions(lectureName)
+        for (var i=0;i<quests.count;i++) {
+            if (quests[i] == questionText) {
+                quests.removeAtIndex(i)
+            }
+        }
+        defaults.setObject(quests, forKey: lectureName)
     }
 
 }

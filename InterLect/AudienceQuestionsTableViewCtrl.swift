@@ -20,6 +20,7 @@ class AudienceQuestionsTableViewController:UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.question = dao.audienceGetQuestions(nameLecture!).reverse()
+        self.question = throwNotDuplicatedToEnd(self.question, vet2: questions)
         self.tableView.reloadData()
         
     }
@@ -41,6 +42,33 @@ class AudienceQuestionsTableViewController:UITableViewController {
         return self.question.count
     }
     
+    func throwNotDuplicatedToEnd(vet1:[String],vet2:[String])->[String] {
+        var newVet = vet1
+        var tempVet = [String]()
+        var i = 0
+        for q in newVet {
+            if (!isInVet(q, vet: vet2)) {
+                tempVet.append(q)
+                newVet.removeAtIndex(i)
+            } else {
+                i++
+            }
+        }
+        for q in tempVet {
+            newVet.append(q)
+        }
+        return newVet
+    }
+    
+    func isInVet(val:String,vet:[String])->Bool {
+        for q1 in vet {
+            if (val == q1) {
+                return true
+            }
+        }
+        return false
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:UITableViewCell = self.tableView!.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
@@ -52,16 +80,40 @@ class AudienceQuestionsTableViewController:UITableViewController {
         
         tableView.estimatedRowHeight = 70.0
         tableView.rowHeight = UITableViewAutomaticDimension
-        
+        cell.textLabel?.text = self.question[indexPath.row]
+        if (!isInVet(self.question[indexPath.row], vet: questions)) {
+            cell.textLabel?.textColor = UIColor.redColor()
+        } else {
+            cell.textLabel?.textColor = UIColor.whiteColor()
+        }
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            if (isInVet(self.question[indexPath.row], vet: questions)) {
+                let alert = UIAlertView()
+                alert.title = "Not red!"
+                alert.message = "Only red questions allowed to delete"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            }
+            else {
+                self.question.removeAtIndex(indexPath.row)
+                let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell?;
+                dao.audienceDeleteQuestion(self.nameLecture!, questionText:currentCell!.textLabel!.text!)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            }
+        }
     }
     
     func refresh(sender:AnyObject){
         
         //code to refresh table
         if (self.nameLecture != nil) {
-            self.question = dao.audienceGetQuestions(self.nameLecture!)
+            self.question = dao.audienceGetQuestions(self.nameLecture!).reverse()
+            self.question = throwNotDuplicatedToEnd(self.question, vet2: questions)
         }
         self.tableView.reloadData()
         
