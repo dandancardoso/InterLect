@@ -21,6 +21,7 @@ class AudienceQuestionsTableViewController:UITableViewController {
         super.viewWillAppear(animated)
         self.question = dao.audienceGetQuestions(nameLecture!).reverse()
         self.tableView.reloadData()
+        
     }
     
     override func viewDidLoad() {
@@ -44,16 +45,16 @@ class AudienceQuestionsTableViewController:UITableViewController {
         
         var cell:UITableViewCell = self.tableView!.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         
-        cell.textLabel?.font = UIFont(name: "Futura", size: 14.0)
         cell.textLabel?.numberOfLines = 0
-        tableView.estimatedRowHeight = 70.0
-        tableView.rowHeight = UITableViewAutomaticDimension
-        
+        cell.textLabel?.font = UIFont(name: "Futura", size: 14.0)
         cell.textLabel?.text = self.question[indexPath.row]
         cell.textLabel?.textColor = UIColor.whiteColor()
         
-        return cell
+        tableView.estimatedRowHeight = 70.0
+        tableView.rowHeight = UITableViewAutomaticDimension
         
+        
+        return cell
     }
     
     func refresh(sender:AnyObject){

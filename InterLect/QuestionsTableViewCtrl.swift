@@ -22,6 +22,7 @@ class QuestionsTableViewCtrl:UITableViewController {
 //            dao.updateQuestions(self.nameLecture!)
 //        }
         self.question = questions
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -48,20 +49,21 @@ class QuestionsTableViewCtrl:UITableViewController {
         
         var cell:UITableViewCell = self.tableView!.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         
-        cell.textLabel?.font = UIFont(name: "Futura", size: 14.0)
         cell.textLabel?.numberOfLines = 0
-        tableView.estimatedRowHeight = 70.0
-        tableView.rowHeight = UITableViewAutomaticDimension
-        
+        cell.textLabel!.font = UIFont(name:"Futura", size: 14.0)
         cell.textLabel?.text = self.question[indexPath.row]
         cell.textLabel?.textColor = UIColor.whiteColor()
+        
+        tableView.estimatedRowHeight = 70.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+
         
         return cell
         
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
+            if editingStyle == UITableViewCellEditingStyle.Delete {
             self.question.removeAtIndex(indexPath.row)
             let currentCell = tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell?;
             dao.deleteQuestion(self.nameLecture!, questionText:currentCell!.textLabel!.text!)

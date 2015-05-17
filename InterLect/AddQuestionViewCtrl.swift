@@ -38,7 +38,6 @@ class AddQuestionViewCtrl:UIViewController,UITextViewDelegate {
         if (self.question != nil && self.question.text != "" && self.lectureName != nil) {
             var dao = DAOLecture()
             let alert = UIAlertView()
-            
             dao.addQuestion(self.lectureName!, questionText: self.question.text)
             //dao.updateQuestions(self.lectureName!)
             
