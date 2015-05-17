@@ -94,8 +94,8 @@ class AudienceQuestionsTableViewController:UITableViewController {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             if (isInVet(self.question[indexPath.row], vet: questions)) {
                 let alert = UIAlertView()
-                alert.title = "Not red!"
-                alert.message = "Only red questions allowed to delete"
+                alert.title = "Question wasn't answered!"
+                alert.message = "Only questions that were answered can be deleted."
                 alert.addButtonWithTitle("OK")
                 alert.show()
             }
