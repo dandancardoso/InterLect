@@ -543,7 +543,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Add Question" id="3g2-EH-cQq">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="XC0-L9-0dR">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="XC0-L9-0dR">
                             <connections>
                                 <action selector="addQuestion:" destination="THA-3b-NIW" id="yck-vA-wdA"/>
                             </connections>
