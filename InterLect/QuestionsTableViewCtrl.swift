@@ -22,7 +22,7 @@ class QuestionsTableViewCtrl:UITableViewController {
 //            dao.updateQuestions(self.nameLecture!)
 //        }
         self.question = questions
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {

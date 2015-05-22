@@ -37,14 +37,24 @@ class DAOLecture {
     let rolePanelist = 1
     let roleAudience = 0
     
+    ////////////////////////////////////////////////////////////////////////////////////
+    // Não esquecer de trocar o firebase quando passar do desenvolvimento para produção
+    //
+    // Firebase para desenvolvimento
+    let firebasePath = "https://interlectdev.firebaseio.com/InterLect/"
+    //
+    // Firebase para producao
+    // let firebasePath = "https://scorching-torch-3197.firebaseio.com/InterLect/"
+    ///////////////////////////////////////////////////////////////////////////////////
+    
     func saveLecture(lecture:Lecture)->Bool {
         //verificar se pode criar!
-        var refLectures = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Lectures")
+        var refLectures = Firebase(url:firebasePath+"Lectures")
         var passwords = ["panelist": lecture.panelistPassword!.md5, "audience": lecture.audiencePassword!.md5]
         var lec = refLectures.childByAppendingPath(lecture.name)
         lec.setValue(passwords)
         
-        var refQuestions = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions")
+        var refQuestions = Firebase(url:firebasePath+"Questions")
         var questionText = ["ignore":""]
         var question = refQuestions.childByAppendingPath(lecture.name)
         question.setValue(questionText)
@@ -90,7 +100,7 @@ class DAOLecture {
     }
     
     func updateDataBase() {
-        var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Lectures")
+        var ref = Firebase(url:firebasePath+"Lectures")
         var keys = [AnyObject]()
         ref.observeEventType(.Value, withBlock: { snapshot in
             dataBase = snapshot
@@ -158,7 +168,7 @@ class DAOLecture {
     
     func updateQuestions(name:String) {
         questions = [String]()
-        var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(name)")
+        var ref = Firebase(url:firebasePath+"/Questions/\(name)")
         if (ref != nil) {
             if (handler != nil) {
                 ref.removeObserverWithHandle(handler!)
@@ -174,14 +184,14 @@ class DAOLecture {
     }
     
     func deleteQuestion(lectureName:String,questionText:String) {
-        var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(lectureName)")
+        var ref = Firebase(url:firebasePath+"Questions/\(lectureName)")
         if (ref != nil) {
             ref.observeSingleEventOfType(.Value, withBlock: { snapshot in
                 if (snapshot.exists()) {
                     var dic : NSDictionary = snapshot.value as! NSDictionary
                     for q in dic {
                         if (questionText == q.value as! String) {
-                            var r = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(lectureName)/\(q.key)")
+                            var r = Firebase(url:self.firebasePath+"/Questions/\(lectureName)/\(q.key)")
                             r.removeValue();
                             //why this break doesn't work? it still removes two questions when they are equal.
                             break
@@ -201,7 +211,7 @@ class DAOLecture {
     
     func addQuestion(lectureName:String,questionText:String) {
         if (questionText != "") {
-            var ref = Firebase(url:"https://scorching-torch-3197.firebaseio.com/InterLect/Questions/\(lectureName)")
+            var ref = Firebase(url:firebasePath+"Questions/\(lectureName)")
             if (ref != nil) {
                 var key = stringFromCurrentDate()
                 var post1Ref = ref.childByAppendingPath(key)
