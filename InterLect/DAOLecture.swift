@@ -41,10 +41,10 @@ class DAOLecture {
     // Não esquecer de trocar o firebase quando passar do desenvolvimento para produção
     //
     // Firebase para desenvolvimento
-    let firebasePath = "https://interlectdev.firebaseio.com/InterLect/"
+    // let firebasePath = "https://interlectdev.firebaseio.com/InterLect/"
     //
     // Firebase para producao
-    // let firebasePath = "https://scorching-torch-3197.firebaseio.com/InterLect/"
+     let firebasePath = "https://scorching-torch-3197.firebaseio.com/InterLect/"
     ///////////////////////////////////////////////////////////////////////////////////
     
     func saveLecture(lecture:Lecture)->Bool {
